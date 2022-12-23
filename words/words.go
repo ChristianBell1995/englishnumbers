@@ -105,15 +105,16 @@ func (w *Words) parseSixDigitNumber(number int) string {
 	return "one hundred thousand"
 }
 
+// function that takes in the prefix and the modulo of the end numbers and returns the number in english
 func (w *Words) switchForModuloOfEndNumbers(prefix string, moduloResult int) string {
 	switch m := moduloResult; {
 	case m == 0:
 		return prefix
 	case m < 10:
-		return prefix + ", " + w.and + " " + w.parseOneDigitNumber(m)
+		return prefix + " " + w.and + " " + w.parseOneDigitNumber(m)
 	case m < 100:
-		return prefix + ", " + w.and + " " + w.parseTwoDigitNumber(m)
+		return prefix + " " + w.and + " " + w.parseTwoDigitNumber(m)
 	default:
-		return prefix + ", " + w.and + " " + w.parseThreeDigitNumber(m)
+		return prefix + ", " + w.parseThreeDigitNumber(m)
 	}
 }
